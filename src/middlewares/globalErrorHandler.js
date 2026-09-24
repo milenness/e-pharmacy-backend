@@ -1,9 +1,13 @@
-const globalErrorHandler = (err, req, res, next) => {
-  const { status = 500, message = "Internal Server Error" } = err;
+const HttpError = require("../utils/HttpError");
 
-  res.status(status).json({
-    message,
-  });
+const validateBody = (schema) => {
+  return (req, res, next) => {
+    const { error } = schema.validate(req.body);
+    if (error) {
+      return next(HttpError(400, error.message));
+    }
+    next();
+  };
 };
 
-module.exports = globalErrorHandler;
+module.exports = validateBody;

@@ -14,7 +14,7 @@ const userSchema = new Schema(
     },
     phone: {
       type: String,
-      required: [true, "Phone number is required"],
+      default: "",
     },
     password: {
       type: String,
@@ -28,15 +28,15 @@ const userSchema = new Schema(
   { versionKey: false, timestamps: true },
 );
 
-userSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) return next();
+// Хук: автоматичне хешування пароля перед збереженням у БД
+userSchema.pre("save", async function () {
+  if (!this.isModified("password")) return;
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
-  next();
 });
 
-userSchema.methods.comparePassword = async function (candidatePassword) {
-  return await bcrypt.compare(candidatePassword, this.password);
+userSchema.methods.comparePassword = async function (password) {
+  return await bcrypt.compare(password, this.password);
 };
 
 const User = model("user", userSchema);
