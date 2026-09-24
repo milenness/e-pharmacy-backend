@@ -1,7 +1,11 @@
 const { Schema, model } = require("mongoose");
 
-const storeSchema = new Schema(
+const orderSchema = new Schema(
   {
+    photo: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,
@@ -10,27 +14,27 @@ const storeSchema = new Schema(
       type: String,
       required: true,
     },
-    city: {
+    products: {
       type: String,
       required: true,
     },
-    phone: {
+    price: {
       type: String,
-      required: true,
-    },
-    rating: {
-      type: Number,
       required: true,
     },
     status: {
       type: String,
-      enum: ["OPEN", "CLOSE"],
+      enum: ["Completed", "Confirmed", "Pending", "Cancelled"],
+      required: true,
+    },
+    order_date: {
+      type: String,
       required: true,
     },
   },
   { versionKey: false, timestamps: true },
 );
 
-const Store = model("store", storeSchema, "pharmacies");
+const Order = model("order", orderSchema, "orders");
 
-module.exports = Store;
+module.exports = Order;

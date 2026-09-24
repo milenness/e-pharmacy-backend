@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const storeSchema = new Schema(
+const supplierSchema = new Schema(
   {
     name: {
       type: String,
@@ -10,27 +10,26 @@ const storeSchema = new Schema(
       type: String,
       required: true,
     },
-    city: {
+    suppliers: {
       type: String,
       required: true,
     },
-    phone: {
+    date: {
       type: String,
       required: true,
     },
-    rating: {
-      type: Number,
+    amount: {
+      type: String, // Зберігаємо як рядок через наявність символу "b"
       required: true,
     },
     status: {
       type: String,
-      enum: ["OPEN", "CLOSE"],
       required: true,
     },
   },
   { versionKey: false, timestamps: true },
 );
 
-const Store = model("store", storeSchema, "pharmacies");
+const Supplier = model("supplier", supplierSchema, "suppliers");
 
-module.exports = Store;
+module.exports = Supplier;

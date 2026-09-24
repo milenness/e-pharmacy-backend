@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const storeSchema = new Schema(
+const nearestPharmacySchema = new Schema(
   {
     name: {
       type: String,
@@ -31,6 +31,10 @@ const storeSchema = new Schema(
   { versionKey: false, timestamps: true },
 );
 
-const Store = model("store", storeSchema, "pharmacies");
+const NearestPharmacy = model(
+  "nearestPharmacy",
+  nearestPharmacySchema,
+  "nearest_pharmacies",
+);
 
-module.exports = Store;
+module.exports = NearestPharmacy;
