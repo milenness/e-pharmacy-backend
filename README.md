@@ -1,6 +1,6 @@
 # 💊 E-Pharmacy API (Backend)
 
-## 🔗 [Live API URL](TBD) | 🖥️ [Frontend Repository](TBD)
+## 🔗 [Live API URL](TBD) | 🖥️ [Frontend Repository](https://github.com/milenness/e-pharmacy-frontend)
 
 **E-Pharmacy API** is a robust, RESTful backend service built to power the E-Pharmacy web application. It handles secure user authentication, product catalog management, shopping cart operations, and store directory queries using a modern Node.js and MongoDB stack.
 
