@@ -19,7 +19,7 @@ const supplierSchema = new Schema(
       required: true,
     },
     amount: {
-      type: String, // Зберігаємо як рядок через наявність символу "b"
+      type: String,
       required: true,
     },
     status: {

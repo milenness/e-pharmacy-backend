@@ -5,9 +5,9 @@ const updateCartSchema = Joi.object({
     "any.required": "Product ID is required",
     "string.length": "Product ID must be a valid MongoDB ObjectId",
   }),
-  quantity: Joi.number().integer().min(1).required().messages({
+  quantity: Joi.number().integer().min(0).required().messages({
     "any.required": "Quantity is required",
-    "number.min": "Quantity must be at least 1",
+    "number.min": "Quantity cannot be negative",
   }),
 });
 
